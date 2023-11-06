@@ -1,27 +1,30 @@
+if (process.env.NODE_ENV !== "production") {
+  require('dotenv').config();
+}
 const express = require("express");
-require('dotenv').config();
+
 require('./src/config/database')
 const myRoutes = require('./src/routes')
 const port = process.env.PORT || 3000;
 const bodyParser = require("body-parser");
 
 const ChannelModel = require('./src/models/channel');
-const dbUrl = process.env.url;
-
-//mongoose
 
 
-    
+
+
+
+
 var path = require('path');
 
 const app = express();
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 
-app.get("/",function(req, res){
-    console.log("get");
-    res.send("ewwwwwww");
+app.get("/", function (req, res) {
+  console.log("get");
+  res.send("ewwwwwww");
 });
 
 app.use('/', myRoutes);
@@ -30,7 +33,7 @@ app.use('/', myRoutes);
 
 
 
-    
+
 
 
 //   const channelModel = new ChannelModel();
@@ -59,8 +62,8 @@ app.use('/', myRoutes);
 //   .catch((e) => {
 //     console.log(e)
 //   });
- 
+
 
 app.listen(port, () => {
-    console.log(`server listening at ${port}`);
+  console.log(`server listening at ${port}`);
 });
