@@ -6,22 +6,34 @@ const channelSchema = new mongoose.Schema({
         required: true,
         trim: true,
         unique: true,
-        min: 5,
-        max: 10
+        validate: {
+            validator: function(value) {
+                return value.length >= 5 && value.length <= 10;
+            },
+            message: 'User name must be between 5 and 10 characters'
+        }
     },
     fullName: {
         type: String,
         required: true,
         trim: true,
-        min: 5,
-        max: 50
+        validate: {
+            validator: function(value){
+                return value.length >=5 && value.length <= 50;
+            },
+            message: "Name must be between 5 and 50 characters"
+        }
     },
     password: {
         type: String,
         required: true,
         trim: true,
-        min: 8,
-        max: 15
+        validate: {
+            validator: function(value) {
+                return value.length >= 8 && value.length <= 15;
+            },
+            message: 'Password must be between 8 and 15 characters'
+        }
     },
 
     email: {
@@ -30,7 +42,7 @@ const channelSchema = new mongoose.Schema({
         trim: true,
         unique: true,
 
-        max: 254,
+        
 
         validate: {
             validator: function (value) {
