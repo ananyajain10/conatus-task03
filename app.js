@@ -22,10 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
-app.get("/", function (req, res) {
-  console.log("get");
-  res.send("ewwwwwww");
-});
+
 
 app.use('/', myRoutes);
 
@@ -36,32 +33,7 @@ app.use('/', myRoutes);
 
 
 
-//   const channelModel = new ChannelModel();
 
-//   channelModel instanceof ChannelModel;
-//   channelModel instanceof mongoose.Model;
-//   channelModel instanceof mongoose.Document;
-
-//   channelModel.name = name;
-//   channelModel.email = email;
-
-// console.log(channelModel.name);
-
-//   var output;
-//   (async () => {
-//     output = await channelModel.save();
-
-//   });
-
-//   channelModel
-//   .save()
-//   .then(savedDoc => {
-//     savedDoc === channelModel;
-//     console.log(savedDoc);
-//   })
-//   .catch((e) => {
-//     console.log(e)
-//   });
 
 
 app.listen(port, () => {
