@@ -1,17 +1,24 @@
-const userModel = require('../../models/channel')
-
+const userModel = require('../../models/channel');
+const bcrypt = require('bcrypt');
 
 
 const signupUser = async(req, res) =>{
 
-    const {email, userName} = req.body    //already saved whole data
+    const {email, userName, password} = req.body    //already saved whole data
     try{
         let checkUser = await userModel.findOne({"$or": [{email: email}, {userName: userName}]})
       //console.log("checkuser", !!checkUser); if null false else true
 
         if(!checkUser){
-            // enter user if it does not exist
-            let result = await userModel.create(req.body)
+            const salt = await bcrypt.genSalt();
+            const passwordHash = await bcrypt.hash(password, salt);
+            
+            
+            // enter user if it does not exist already
+            let result = await userModel.create({
+                ...req.body,
+                password: passwordHash
+            })
             res.send({
             data: result,
             message: "user created ",
