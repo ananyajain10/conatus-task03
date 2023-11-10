@@ -4,7 +4,7 @@ if (process.env.NODE_ENV !== "production") {
 const express = require("express");
 
 require('./src/config/database')
-const myRoutes = require('./src/routes')
+const myRoutes = require('./src/routes/indexx')
 const port = process.env.PORT || 3000;
 const bodyParser = require("body-parser");
 
