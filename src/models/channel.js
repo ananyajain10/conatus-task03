@@ -30,7 +30,7 @@ const channelSchema = new mongoose.Schema({
         trim: true,
         validate: {
             validator: function(value) {
-                return value.length >= 8 && value.length <= 15;
+                return value.length >= 8;
             },
             message: 'Password must be between 8 and 15 characters'
         }
@@ -51,16 +51,11 @@ const channelSchema = new mongoose.Schema({
             },
             message: 'Invalid email format'
         }
-    },
+    }
 
 
 
-    bio: {
-        type: String,
-        required: true,
-        default: null
-
-    },
+    
 
 
 
